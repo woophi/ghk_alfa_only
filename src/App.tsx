@@ -12,7 +12,7 @@ import { appSt } from './style.css';
 
 export const App = () => {
   // const [loading, setLoading] = useState(false);
-  const [err, setError] = useState('');
+  const [_, setError] = useState('');
   const [selectedItems, setSelected] = useState<{ id: number; title: string }[]>([]);
 
   const selectedItemsIds = selectedItems.map(i => i.id);
