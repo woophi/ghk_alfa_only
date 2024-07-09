@@ -1,19 +1,24 @@
 import { ButtonMobile } from '@alfalab/core-components/button/mobile';
 import { CDNIcon } from '@alfalab/core-components/cdn-icon';
 import { Gap } from '@alfalab/core-components/gap';
+import { Notification } from '@alfalab/core-components/notification';
 import { Typography } from '@alfalab/core-components/typography';
 import { useCallback, useState } from 'react';
 import alfaLogo from './assets/alfa_only_logo.png';
 
 import { CheckboxCell } from './CheckboxCell';
 import { checkboxItems, selectorItems, vipIds, visibleSpendings } from './data';
+import { LS, LSKeys } from './ls';
 import { SelectorCell } from './SelectorCell';
 import { appSt } from './style.css';
+import { ThxLayout } from './thx/ThxLayout';
 
 export const App = () => {
-  // const [loading, setLoading] = useState(false);
-  const [_, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [err, setError] = useState('');
   const [selectedItems, setSelected] = useState<{ id: number; title: string }[]>([]);
+  const [thxShow, setThx] = useState(LS.getItem(LSKeys.ShowThx, false));
+  const [isVisible, setIsVisible] = useState(false);
 
   const selectedItemsIds = selectedItems.map(i => i.id);
   const showSubscription = !!selectedItemsIds.length && !selectedItemsIds.some(id => vipIds.includes(id));
@@ -21,12 +26,18 @@ export const App = () => {
     s => selectedItemsIds.some(id => s.ids.includes(id)) && !selectedItemsIds.some(id => s.notIds.includes(id)),
   );
 
+  const hideNotification = useCallback(() => setIsVisible(false), []);
   const submit = useCallback(() => {
     if (!selectedItems.length || !selectedItems.some(si => si.id === 1 || si.id === 2)) {
       setError('Выберите кэшбэк рублями');
+      setIsVisible(true);
       return;
     }
-    // setLoading(true);
+    setLoading(true);
+    // LS.setItem(LSKeys.ShowThx, true);
+    setThx(true);
+    setLoading(false);
+
     // sendDataToGA(selectedItems).then(() => {
     //   setLoading(false);
 
@@ -37,10 +48,14 @@ export const App = () => {
   const onItemSelect = useCallback((item: { id: number; title: string }, allItems: { id: number; title: string }[] = []) => {
     const isInGroup = allItems.some(i => i.id === item.id);
     setSelected(selected => {
-      const emptyGroup = isInGroup ? selected.filter(s => !allItems.some(i => i.id === s.id)) : selected;
+      const emptyGroup = isInGroup ? selected.filter(s => !allItems.some(i => i.id === s.id && i.id !== item.id)) : selected;
       return emptyGroup.some(s => s.id === item.id) ? emptyGroup.filter(s => s.id !== item.id) : emptyGroup.concat(item);
     });
   }, []);
+
+  if (thxShow) {
+    return <ThxLayout />;
+  }
 
   return (
     <>
@@ -70,7 +85,7 @@ export const App = () => {
       </div>
       <Gap size={showSubscription ? 256 : 128} />
       <div className={appSt.bottomBtn}>
-        <ButtonMobile block view="primary" className={appSt.btn} onClick={submit}>
+        <ButtonMobile loading={loading} block view="primary" className={appSt.btn} onClick={submit}>
           {showSubscription && (
             <div>
               <Typography.Text color="secondary-inverted" tag="p" view="primary-medium" defaultMargins={false}>
@@ -108,6 +123,16 @@ export const App = () => {
           </div>
         </ButtonMobile>
       </div>
+      <Notification
+        badge="negative"
+        title={err}
+        visible={isVisible}
+        offset={showSubscription ? 172 : 108}
+        onClose={hideNotification}
+        onCloseTimeout={hideNotification}
+        position="bottom"
+        className={appSt.btn}
+      />
     </>
   );
 };
