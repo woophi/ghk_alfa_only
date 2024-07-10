@@ -79,7 +79,13 @@ export const App = () => {
           ))}
 
           {checkboxItems.map(item => (
-            <CheckboxCell checked={selectedItemsIds.includes(item.id)} item={item} onChange={onItemSelect} key={item.id} />
+            <CheckboxCell
+              checked={selectedItemsIds.includes(item.id)}
+              item={item}
+              onChange={onItemSelect}
+              key={item.id}
+              img={item.img}
+            />
           ))}
         </div>
       </div>
