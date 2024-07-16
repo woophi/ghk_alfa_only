@@ -2,6 +2,13 @@ import p1 from './assets/p1.png';
 import p2 from './assets/p2.png';
 import p3 from './assets/p3.png';
 import p4 from './assets/p4.png';
+import p5 from './assets/p5.png';
+import p6 from './assets/p6.png';
+import p7 from './assets/p7.png';
+import p8 from './assets/p8.png';
+import p9 from './assets/p9.png';
+import p10 from './assets/p10.png';
+import p11 from './assets/p11.png';
 
 export const selectorItems: {
   img: string;
@@ -78,36 +85,36 @@ export const checkboxItems = [
   {
     id: 13,
     title: 'Страхование в путешествиях для всей семьи (по РФ и за границу)',
-    img: p4,
+    img: p5,
   },
   {
     id: 14,
     title: 'Переводы (по номеру телефона / карты / реквизитов)',
-    img: p4,
+    img: p6,
   },
   {
     id: 15,
     title: 'Снятия в банкоматах любых банков',
-    img: p4,
+    img: p7,
   },
   {
     id: 16,
     title: 'Консьерж сервис 24/7 (Лайфстайл / Юридическая / Бухгалтерская / Медицинская поддержка)',
-    img: p4,
+    img: p8,
   },
   {
     id: 17,
     title: 'Выпуск платежного стикера',
-    img: p4,
+    img: p9,
   },
   {
     id: 18,
     title: 'Металлическая карта',
-    img: p4,
+    img: p10,
   },
   {
     id: 19,
     title: 'Надбавка к накопительному счету',
-    img: p4,
+    img: p11,
   },
 ];
