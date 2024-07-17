@@ -19,7 +19,7 @@ export const ThxLayout = () => {
       </div>
       <Gap size={128} />
       <div className={appSt.bottomBtn}>
-        <ButtonMobile block view="primary" className={appSt.btn} href="alfabank:///user_profile">
+        <ButtonMobile block view="primary" className={appSt.btn} href="alfabank://user_profile">
           Перейти в Профиль
         </ButtonMobile>
       </div>
