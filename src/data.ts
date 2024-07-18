@@ -64,14 +64,44 @@ export const visibleSpendings = [
   {
     mln: 1.5,
     ths: 100,
-    ids: [1, 2, 3, 4, 5, 6, 9, 10, 13, 14, 15, 16, 17, 19],
+    ids: [1, 2, 3, 5, 6, 9, 10, 13, 14, 15, 16, 17, 19],
     notIds: [7, 11, 8, 12, 18],
   },
   {
     mln: 3,
     ths: 200,
-    ids: [7, 11, 18],
+    ids: [7, 11],
     notIds: [8, 12],
+  },
+  {
+    mln: 1.5,
+    ths: 150,
+    ids: [4],
+    notIds: [18],
+  },
+  {
+    mln: 3,
+    ths: 0,
+    ids: [18],
+    notIds: [19, 3, 4],
+  },
+  {
+    mln: 3,
+    ths: 100,
+    ids: [18, 19],
+    notIds: [3, 4],
+  },
+  {
+    mln: 3,
+    ths: 10,
+    ids: [18, 3],
+    notIds: [19, 4],
+  },
+  {
+    mln: 3,
+    ths: 150,
+    ids: [18, 4],
+    notIds: [19, 3],
   },
   {
     mln: 12,
