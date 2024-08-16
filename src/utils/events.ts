@@ -3,7 +3,22 @@ declare global {
     dataLayer: unknown[];
   }
 }
-export const sendDataToGA = async (item: string) => {
+
+type Payload = {
+  cashback_rub: string;
+  cashback_mil: string;
+  transfers: string;
+  aeroports: string;
+  insurance: 1 | 0;
+  money_transfer: 1 | 0;
+  atm: 1 | 0;
+  concierge: 1 | 0;
+  stiker: 1 | 0;
+  metal_card: 1 | 0;
+  savings_account: 1 | 0;
+};
+
+export const sendDataToGA = async (data: Payload) => {
   try {
     const now = new Date();
     const date = `${now.getFullYear()}-${
@@ -11,11 +26,11 @@ export const sendDataToGA = async (item: string) => {
     }-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
     await fetch(
-      'https://script.google.com/macros/s/AKfycbweSx_2_ZVpwJ4SNHvg9hk6pLUW_QJgXCsFYy5jAvlRrsW7FEKnD5k9r9f_tqPDd4pb9w/exec',
+      'https://script.google.com/macros/s/AKfycbxoXM_E18uUUad3n-fhSG29v5qlDVLuS7yn0RKaTKoLxmmMId6dEwZEQVvNUWE7UtSEDg/exec',
       {
         redirect: 'follow',
         method: 'POST',
-        body: JSON.stringify({ date, button: item, variant: 'variant_0' }),
+        body: JSON.stringify({ date, ...data, variant: 'variant1' }),
         headers: {
           'Content-Type': 'text/plain;charset=utf-8',
         },

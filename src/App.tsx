@@ -12,6 +12,7 @@ import { LS, LSKeys } from './ls';
 import { SelectorCell } from './SelectorCell';
 import { appSt } from './style.css';
 import { ThxLayout } from './thx/ThxLayout';
+import { sendDataToGA } from './utils/events';
 
 export const App = () => {
   const [loading, setLoading] = useState(false);
@@ -34,15 +35,23 @@ export const App = () => {
       return;
     }
     setLoading(true);
-    // LS.setItem(LSKeys.ShowThx, true);
-    setThx(true);
-    setLoading(false);
-
-    // sendDataToGA(selectedItems).then(() => {
-    //   setLoading(false);
-
-    //   (window.location as unknown as string) = 'alfabank://longread?endpoint=v1/adviser/longreads/16096';
-    // });
+    sendDataToGA({
+      cashback_rub: selectedItems.find(si => [1, 2].includes(si.id))?.title ?? '',
+      cashback_mil: selectedItems.find(si => [3, 4].includes(si.id))?.title ?? '',
+      transfers: selectedItems.find(si => [5, 6, 7, 8].includes(si.id))?.title ?? '',
+      aeroports: selectedItems.find(si => [9, 10, 11, 12].includes(si.id))?.title ?? '',
+      insurance: Number(selectedItems.some(si => si.id === 13)) as 1 | 0,
+      money_transfer: Number(selectedItems.some(si => si.id === 14)) as 1 | 0,
+      atm: Number(selectedItems.some(si => si.id === 15)) as 1 | 0,
+      concierge: Number(selectedItems.some(si => si.id === 16)) as 1 | 0,
+      stiker: Number(selectedItems.some(si => si.id === 17)) as 1 | 0,
+      metal_card: Number(selectedItems.some(si => si.id === 18)) as 1 | 0,
+      savings_account: Number(selectedItems.some(si => si.id === 19)) as 1 | 0,
+    }).then(() => {
+      LS.setItem(LSKeys.ShowThx, true);
+      setThx(true);
+      setLoading(false);
+    });
   }, [selectedItems]);
 
   const onItemSelect = useCallback((item: { id: number; title: string }, allItems: { id: number; title: string }[] = []) => {
