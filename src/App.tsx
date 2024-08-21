@@ -96,7 +96,7 @@ export const App = () => {
         <div className={appSt.topContainer}>
           <img src={alfaLogo} width={158} height={38} alt="Alfa Only" />
           <Typography.Text tag="p" view="primary-medium" defaultMargins={false}>
-            Настройте свою подписку, и мы покажем условия её получения
+            Настройте свою подписку — покажем, как её получить
           </Typography.Text>
 
           {selectorItems.map(item => (
@@ -128,7 +128,7 @@ export const App = () => {
           {showSubscription && (
             <div>
               <Typography.Text color="secondary-inverted" tag="p" view="primary-medium" defaultMargins={false}>
-                2990 ₽ / мес.
+                2990 ₽ в месяц
               </Typography.Text>
               <Typography.Text color="secondary-inverted" tag="p" view="primary-medium" defaultMargins={false}>
                 или
@@ -139,10 +139,10 @@ export const App = () => {
           <div className={appSt.btnContainer}>
             <div>
               <Typography.TitleResponsive font="system" tag="h2" view="xsmall" weight="bold">
-                ₽ {mlns} млн.
+                ₽ {mlns} млн
               </Typography.TitleResponsive>
               <Typography.Text color="secondary-inverted" tag="p" view="primary-medium" defaultMargins={false}>
-                На счете
+                На счёте
               </Typography.Text>
             </div>
 
@@ -150,10 +150,10 @@ export const App = () => {
               {grands ? (
                 <div>
                   <Typography.TitleResponsive font="system" tag="h2" view="xsmall" weight="bold">
-                    ₽ {grands} тыс.
+                    ₽ {grands} тыс
                   </Typography.TitleResponsive>
                   <Typography.Text color="secondary-inverted" tag="p" view="primary-medium" defaultMargins={false}>
-                    Траты в мес.
+                    Траты в месяц
                   </Typography.Text>
                 </div>
               ) : null}
