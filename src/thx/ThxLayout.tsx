@@ -11,10 +11,10 @@ export const ThxLayout = () => {
       <div className={thxSt.container}>
         <img src={rocket} width={135} className={thxSt.rocket} />
         <Typography.TitleResponsive font="system" tag="h1" view="large" defaultMargins weight="bold">
-          Спасибо, за Ваш выбор!
+          Спасибо за Ваш выбор!
         </Typography.TitleResponsive>
         <Typography.Text tag="p" view="primary-medium" defaultMargins={false}>
-          Для уточнения деталей и подключения пакета свяжитесь с вашим персональным менеджером.
+          Свяжитесь с вашим персональным менеджером, чтобы перейти в Alfa Only
         </Typography.Text>
       </div>
       <Gap size={128} />
