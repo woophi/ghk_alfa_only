@@ -128,10 +128,7 @@ export const App = () => {
           {showSubscription && (
             <div>
               <Typography.Text color="secondary-inverted" tag="p" view="primary-medium" defaultMargins={false}>
-                2990 ₽ в месяц
-              </Typography.Text>
-              <Typography.Text color="secondary-inverted" tag="p" view="primary-medium" defaultMargins={false}>
-                или
+                2990 ₽ в месяц или
               </Typography.Text>
               <Gap size={16} />
             </div>
@@ -139,7 +136,7 @@ export const App = () => {
           <div className={appSt.btnContainer}>
             <div>
               <Typography.TitleResponsive font="system" tag="h2" view="xsmall" weight="bold">
-                ₽ {mlns} млн
+                {mlns} ₽ млн
               </Typography.TitleResponsive>
               <Typography.Text color="secondary-inverted" tag="p" view="primary-medium" defaultMargins={false}>
                 На счёте
@@ -150,7 +147,7 @@ export const App = () => {
               {grands ? (
                 <div>
                   <Typography.TitleResponsive font="system" tag="h2" view="xsmall" weight="bold">
-                    ₽ {grands} тыс
+                    {grands} ₽ тыс
                   </Typography.TitleResponsive>
                   <Typography.Text color="secondary-inverted" tag="p" view="primary-medium" defaultMargins={false}>
                     Траты в месяц
